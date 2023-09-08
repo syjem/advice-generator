@@ -1,0 +1,92 @@
+@use "./variables" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1rem;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--dark-blue);
+}
+
+section {
+  display: flex;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 440px;
+  max-width: 440px;
+  height: 330px;
+  padding: 2rem;
+  position: relative;
+  border-radius: 10px;
+  background-color: var(--dark-grayish-blue);
+  box-shadow: 1px 1px 20px hsl(218, 22%, 10%);
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: auto;
+    }
+  }
+
+  .github-logo {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    &:hover {
+      filter: drop-shadow(0 0 10px var(--light-cyan));
+    }
+  }
+
+  .advice-id {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--neon-green);
+  }
+
+  .advice {
+    font-size: clamp(1rem, 2.5rem, 28px) !important;
+    color: var(--light-cyan);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  svg {
+    position: absolute;
+    bottom: 50px;
+  }
+
+  button {
+    position: absolute;
+    bottom: -25px;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--neon-green);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 1px 1px 10px var(--dark-blue);
+
+    &:hover {
+      filter: drop-shadow(0 0 15px var(--neon-green));
+      box-shadow: unset;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+
+    img {
+      width: 25px;
+    }
+  }
+}
