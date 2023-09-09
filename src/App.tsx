@@ -1,23 +1,29 @@
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import dice from "./assets/icon-dice.svg";
 import "./scss/_advice.scss";
 
+const API_URL = "https://api.adviceslip.com/advice";
+
 function AdviceGenerator() {
-  const [advice, setAdvice] = React.useState<null | string>(null);
-  const [id, setId] = React.useState<null | number>(null);
+  const [advice, setAdvice] = useState<string>("");
+  const [id, setId] = useState<null | number>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const generateAdvice = async () => {
     try {
-      const response = await fetch("https://api.adviceslip.com/advice");
+      const response = await fetch(API_URL);
 
       if (!response.ok) {
-        throw new Error("Unable to fetch advice at the moment.");
+        throw new Error("Failed to fetch advice.");
       }
+
       const data = await response.json();
+      const dataAdvice = `"${data.slip.advice}"`;
       setId(data.slip.id);
-      setAdvice(data.slip.advice);
+      setAdvice(dataAdvice);
+      setError(null);
     } catch (error) {
-      console.error("Error fetching weather data:", error);
+      setError(`${error}`);
     }
   };
 
@@ -32,7 +38,7 @@ function AdviceGenerator() {
   return (
     <>
       <p className="advice-id">ADVICE #{id}</p>
-      <p className="advice">"{advice}"</p>
+      <p className="advice">{error ? error : advice}</p>
       <svg width="295" height="16" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fillRule="evenodd">
           <path fill="#4F5D74" d="M0 8h122v1H0zM173 8h122v1H173z" />
