@@ -22,11 +22,11 @@ Users should be able to:
 
 ### **Links**
 
-|                |                                                                      |
-| :------------- | :------------------------------------------------------------------- |
-| Solution URL:  | [https://github.com/syjem/search](https://github.com/syjem/search)   |
-| Live Site URL: | [https://search-syjem.vercel.app/](https://search-syjem.vercel.app/) |
-|                |                                                                      |
+|                |                                                                                        |
+| :------------- | :------------------------------------------------------------------------------------- |
+| Solution URL:  | [https://github.com/syjem/advice-generator](https://github.com/syjem/advice-generator) |
+| Live Site URL: | [https://advice-generator-7zt.pages.dev/](https://advice-generator-7zt.pages.dev/)     |
+|                |                                                                                        |
 
 <br>
 
