@@ -74,6 +74,7 @@ section {
     align-items: center;
     cursor: pointer;
     box-shadow: 1px 1px 10px var(--dark-blue);
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
       filter: drop-shadow(0 0 15px var(--neon-green));
