@@ -6,15 +6,16 @@ const API_URL = "https://api.adviceslip.com/advice";
 
 function AdviceGenerator() {
   const [advice, setAdvice] = useState<string>("");
-  const [id, setId] = useState<null | number>(null);
+  const [id, setId] = useState<string | number>("");
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const generateAdvice = async () => {
     try {
       const response = await fetch(API_URL);
 
       if (!response.ok) {
-        throw new Error("Failed to fetch advice.");
+        throw new Error(`Unable to fetch data.`);
       }
 
       const data = await response.json();
@@ -24,6 +25,8 @@ function AdviceGenerator() {
       setError(null);
     } catch (error) {
       setError(`${error}`);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -37,7 +40,9 @@ function AdviceGenerator() {
 
   return (
     <>
-      <p className="advice-id">ADVICE #{id}</p>
+      <p className="advice-id">
+        {loading ? "LOADING..." : error ? "404" : `ADVICE #${id}`}
+      </p>
       <p className="advice">{error ? error : advice}</p>
       <svg width="295" height="16" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" fillRule="evenodd">
